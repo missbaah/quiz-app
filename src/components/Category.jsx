@@ -36,6 +36,8 @@ const Category = () => {
       });
   }, []);
 
+  const handleAnswerClick = () => {};
+
   const ListOfQuestions = questions.map((qtn) => {
     const decodedQuestion = he.decode(qtn.question);
     const decodedCorrectAnswer = he.decode(qtn.correct_answer);
@@ -46,21 +48,25 @@ const Category = () => {
       ...decodedIncorrectAnswers,
       decodedCorrectAnswer,
     ].sort(); // Combine and sort all answers
+
+    console.log(allAnswers);
     return (
       <div key={qtn.question}>
         <p>{decodedQuestion}</p>
-        <ul>
+        <label>
           {allAnswers.map((answer) => (
-            <li
+            <button
+              type="text"
               key={answer}
+              onClick={handleAnswerClick}
               className={
                 answer === decodedCorrectAnswer ? "correct" : "incorrect"
               }
             >
               {answer}
-            </li>
+            </button>
           ))}
-        </ul>
+        </label>
       </div>
     );
   });
