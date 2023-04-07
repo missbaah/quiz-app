@@ -1,15 +1,13 @@
 import React from "react";
-import Category from "./Category";
+import "../App.css";
 
 const Home = () => {
-  //   const category = ["Math", "Science", "Geography"];
-
   const handleClick = (categoryName) => {
     window.location.href = `/category?categoryName=${categoryName}`;
   };
 
   return (
-    <main>
+    <main className="home">
       <h2>Choose your category</h2>
       <section className="btns">
         <button

@@ -20,9 +20,6 @@ const Category = () => {
     categoryNum = 23;
   }
 
-  const amount = 5; // set the number of questions you want to fetch
-  const difficulty = "easy"; // set the difficulty level of the questions
-
   useEffect(() => {
     fetch(
       `https://opentdb.com/api.php?amount=5&category=${categoryNum}&difficulty=easy&type=multiple`
@@ -51,9 +48,9 @@ const Category = () => {
 
     console.log(allAnswers);
     return (
-      <div key={qtn.question}>
+      <div key={qtn.question} className="question">
         <p>{decodedQuestion}</p>
-        <label>
+        <div className="btns">
           {allAnswers.map((answer) => (
             <button
               type="text"
@@ -66,7 +63,7 @@ const Category = () => {
               {answer}
             </button>
           ))}
-        </label>
+        </div>
       </div>
     );
   });
@@ -74,21 +71,36 @@ const Category = () => {
   console.log(ListOfQuestions[num]);
 
   return (
-    <div>
+    <div
+      className="category
+    "
+    >
       <h3>{categoryName}</h3>
       {ListOfQuestions[num]}
-      <button
-        style={{ display: num < 5 ? "block" : "none" }}
-        onClick={() => {
-          if (num < 5) {
-            setNum(num + 1);
-          } else {
-            return <Score />;
-          }
-        }}
-      >
-        Next
-      </button>
+      <div className="ctl-btns">
+        <button
+          style={{ display: num > 0 ? "block" : "none" }}
+          onClick={() => {
+            if (num > 0) {
+              setNum(num - 1);
+            }
+          }}
+        >
+          Previous
+        </button>
+        <button
+          style={{ display: num < 5 ? "block" : "none" }}
+          onClick={() => {
+            if (num < 5) {
+              setNum(num + 1);
+            } else {
+              return <Score />;
+            }
+          }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
