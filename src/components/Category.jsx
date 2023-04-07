@@ -6,6 +6,7 @@ const Category = () => {
   const location = useLocation();
   const categoryName = new URLSearchParams(location.search).get("categoryName");
   const [questions, setQuestions] = useState([]);
+  const [num, setNum] = useState(0);
 
   let categoryNum = 0;
 
@@ -35,16 +36,39 @@ const Category = () => {
       });
   }, []);
 
-  console.log(questions);
-
   const ListOfQuestions = questions.map((qtn) => {
-    return <p key={qtn.question}>{he.decode(qtn.question)}</p>;
+    const decodedQuestion = he.decode(qtn.question);
+    const decodedCorrectAnswer = he.decode(qtn.correct_answer);
+    const decodedIncorrectAnswers = qtn.incorrect_answers.map((answer) =>
+      he.decode(answer)
+    );
+    const allAnswers = [
+      ...decodedIncorrectAnswers,
+      decodedCorrectAnswer,
+    ].sort(); // Combine and sort all answers
+    return (
+      <div key={qtn.question}>
+        <p>{decodedQuestion}</p>
+        <ul>
+          {allAnswers.map((answer) => (
+            <li
+              key={answer}
+              className={
+                answer === decodedCorrectAnswer ? "correct" : "incorrect"
+              }
+            >
+              {answer}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   });
 
   return (
     <div>
       <h3>{categoryName}</h3>
-      <div>{ListOfQuestions}</div>
+      {ListOfQuestions}
     </div>
   );
 };
