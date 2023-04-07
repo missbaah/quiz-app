@@ -65,10 +65,24 @@ const Category = () => {
     );
   });
 
+  console.log(ListOfQuestions[num]);
+
   return (
     <div>
       <h3>{categoryName}</h3>
-      {ListOfQuestions}
+      {ListOfQuestions[num]}
+      <button
+        style={{ display: num < 5 ? "block" : "none" }}
+        onClick={() => {
+          if (num < 5) {
+            setNum(num + 1);
+          } else {
+            return <Score />;
+          }
+        }}
+      >
+        Next
+      </button>
     </div>
   );
 };
