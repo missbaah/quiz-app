@@ -11,8 +11,7 @@ const Score = ({ scoreNum }) => {
       className="score-circle"
       style={{ display: num < 5 ? "none" : "flex" }}
     >
-      {/* {scoreNum}  */}
-      {num}
+      {scoreNum}/5
     </div>
   );
 };

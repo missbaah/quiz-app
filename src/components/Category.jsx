@@ -8,6 +8,7 @@ const Category = () => {
   const location = useLocation();
   const categoryName = new URLSearchParams(location.search).get("categoryName");
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [num, setNum] = useState(0);
   const [clicked, setClicked] = useState(false);
   const [score, setScore] = useState(0);
@@ -34,7 +35,9 @@ const Category = () => {
     )
       .then((response) => response.json())
       .then((data) => {
+        setLoading(true);
         setQuestions([...data.results]);
+        setLoading(false);
       })
       .catch((error) => {
         console.log("Error:" + error);
@@ -108,6 +111,7 @@ const Category = () => {
       <NumContext.Provider value={{ num, setNum }}>
         <h3>{categoryName}</h3>
         <Score scoreNum={score} />
+        <h4 style={{ display: loading ? "block" : "none" }}>Loading....</h4>
         {ListOfQuestions[num]}
 
         <div className="ctl-btns">
