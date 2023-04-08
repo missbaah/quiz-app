@@ -105,9 +105,9 @@ const Category = () => {
       className="category
     "
     >
-      <NumContext.Provider value={(num, setNum)}>
+      <NumContext.Provider value={{ num, setNum }}>
         <h3>{categoryName}</h3>
-        <Score num={score} />
+        <Score scoreNum={score} />
         {ListOfQuestions[num]}
 
         <div className="ctl-btns">

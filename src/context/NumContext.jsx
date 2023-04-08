@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const NumContext = createContext();
+const NumContext = createContext({});
 
 export default NumContext;
