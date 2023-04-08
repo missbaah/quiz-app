@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Score from "./Score";
 import he from "he";
+import NumContext from "../context/NumContext";
 
 const Category = () => {
   const location = useLocation();
@@ -104,34 +105,36 @@ const Category = () => {
       className="category
     "
     >
-      <h3>{categoryName}</h3>
-      <p>Score : {score}</p>
-      {ListOfQuestions[num]}
+      <NumContext.Provider value={(num, setNum)}>
+        <h3>{categoryName}</h3>
+        <Score num={score} />
+        {ListOfQuestions[num]}
 
-      <div className="ctl-btns">
-        <button
-          style={{ display: num < 5 ? "block" : "none" }}
-          onClick={() => {
-            if (num < 5) {
-              setNum(num + 1);
-            }
-            setClicked(false);
-            setSelectedAnswer("");
-            setResetStyle(true);
-            setDisabled(false);
-          }}
-        >
-          Next
-        </button>
-        <button
-          style={{ display: num > 4 ? "block" : "none" }}
-          onClick={() => {
-            window.location.href = "/";
-          }}
-        >
-          Back to home
-        </button>
-      </div>
+        <div className="ctl-btns">
+          <button
+            style={{ display: num < 5 ? "block" : "none" }}
+            onClick={() => {
+              if (num < 5) {
+                setNum(num + 1);
+              }
+              setClicked(false);
+              setSelectedAnswer("");
+              setResetStyle(true);
+              setDisabled(false);
+            }}
+          >
+            Next
+          </button>
+          <button
+            style={{ display: num > 4 ? "block" : "none" }}
+            onClick={() => {
+              window.location.href = "/";
+            }}
+          >
+            Back to home
+          </button>
+        </div>
+      </NumContext.Provider>
     </div>
   );
 };
