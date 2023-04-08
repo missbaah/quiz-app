@@ -48,13 +48,17 @@ button {
   gap: 12px;
 }
 
+.question p {
+  text-align: center;
+}
+
 .ctl-btns {
   display: flex;
   gap: 32px;
+  margin-top: 10px;
 }
 
 .ctl-btns button {
-  display: block;
   color: white;
   border: none;
   border-radius: 4px;

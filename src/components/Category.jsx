@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Score from "./Score";
 import he from "he";
 
 const Category = () => {
@@ -109,16 +110,6 @@ const Category = () => {
 
       <div className="ctl-btns">
         <button
-          style={{ display: num < 1 || num > 4 ? "none" : "block" }}
-          onClick={() => {
-            if (num > 0) {
-              setNum(num - 1);
-            }
-          }}
-        >
-          Previous
-        </button>
-        <button
           style={{ display: num < 5 ? "block" : "none" }}
           onClick={() => {
             if (num < 5) {
@@ -138,7 +129,7 @@ const Category = () => {
             window.location.href = "/";
           }}
         >
-          Back
+          Back to home
         </button>
       </div>
     </div>
