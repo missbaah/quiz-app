@@ -7,9 +7,14 @@ const Category = () => {
   const categoryName = new URLSearchParams(location.search).get("categoryName");
   const [questions, setQuestions] = useState([]);
   const [num, setNum] = useState(0);
+  const [clicked, setClicked] = useState(false);
+  const [score, setScore] = useState(0);
+  const [resetStyle, setResetStyle] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
+  // setting category for API
   let categoryNum = 0;
-
   if (categoryName === "Math") {
     categoryNum = 19;
   } else if (categoryName === "Science") {
@@ -20,6 +25,7 @@ const Category = () => {
     categoryNum = 23;
   }
 
+  // fetching data from API based on category
   useEffect(() => {
     fetch(
       `https://opentdb.com/api.php?amount=5&category=${categoryNum}&difficulty=easy&type=multiple`
@@ -33,31 +39,55 @@ const Category = () => {
       });
   }, []);
 
-  const handleAnswerClick = () => {};
-
+  // rendering the data
   const ListOfQuestions = questions.map((qtn) => {
-    const decodedQuestion = he.decode(qtn.question);
-    const decodedCorrectAnswer = he.decode(qtn.correct_answer);
+    const decodedQuestion = he.decode(qtn.question); // question
+    const decodedCorrectAnswer = he.decode(qtn.correct_answer); // correct answer
     const decodedIncorrectAnswers = qtn.incorrect_answers.map((answer) =>
       he.decode(answer)
-    );
+    ); // incorrect answers
+
     const allAnswers = [
       ...decodedIncorrectAnswers,
       decodedCorrectAnswer,
     ].sort(); // Combine and sort all answers
 
-    console.log(allAnswers);
+    // handling when the answer is clicked
+    const handleAnswerClick = (clickedAnswer) => {
+      setClicked(true);
+      setSelectedAnswer(clickedAnswer);
+
+      // setting the score based on if the answer is correct
+      if (clickedAnswer === decodedCorrectAnswer) {
+        setScore(score + 1);
+      }
+
+      // disabling the button after the first time the button is clicked
+      setDisabled(true);
+    };
+
     return (
       <div key={qtn.question} className="question">
         <p>{decodedQuestion}</p>
         <div className="btns">
+          {/* rending answers */}
           {allAnswers.map((answer) => (
             <button
+              disabled={disabled}
               type="text"
               key={answer}
-              onClick={handleAnswerClick}
+              value={answer}
+              onClick={() => {
+                handleAnswerClick(answer);
+              }}
               className={
-                answer === decodedCorrectAnswer ? "correct" : "incorrect"
+                clicked && answer === decodedCorrectAnswer
+                  ? "correct"
+                  : clicked && answer === selectedAnswer
+                  ? "incorrect"
+                  : resetStyle
+                  ? ""
+                  : ""
               }
             >
               {answer}
@@ -68,18 +98,18 @@ const Category = () => {
     );
   });
 
-  console.log(ListOfQuestions[num]);
-
   return (
     <div
       className="category
     "
     >
       <h3>{categoryName}</h3>
+      <p>Score : {score}</p>
       {ListOfQuestions[num]}
+
       <div className="ctl-btns">
         <button
-          style={{ display: num > 0 ? "block" : "none" }}
+          style={{ display: num < 1 || num > 4 ? "none" : "block" }}
           onClick={() => {
             if (num > 0) {
               setNum(num - 1);
@@ -93,12 +123,22 @@ const Category = () => {
           onClick={() => {
             if (num < 5) {
               setNum(num + 1);
-            } else {
-              return <Score />;
             }
+            setClicked(false);
+            setSelectedAnswer("");
+            setResetStyle(true);
+            setDisabled(false);
           }}
         >
           Next
+        </button>
+        <button
+          style={{ display: num > 4 ? "block" : "none" }}
+          onClick={() => {
+            window.location.href = "/";
+          }}
+        >
+          Back
         </button>
       </div>
     </div>
