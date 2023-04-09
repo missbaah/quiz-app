@@ -9,9 +9,9 @@ const Score = ({ scoreNum }) => {
   return (
     <div
       className="score-circle"
-      style={{ display: num < 5 ? "none" : "flex" }}
+      style={{ display: num < 8 ? "none" : "flex" }}
     >
-      {scoreNum}/5
+      {scoreNum}/8
     </div>
   );
 };

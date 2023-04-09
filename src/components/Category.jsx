@@ -33,7 +33,7 @@ const Category = () => {
   // fetching data from API based on category
   useEffect(() => {
     fetch(
-      `https://opentdb.com/api.php?amount=5&category=${categoryNum}&difficulty=easy&type=multiple`
+      `https://opentdb.com/api.php?amount=8&category=${categoryNum}&difficulty=easy&type=multiple`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -118,9 +118,9 @@ const Category = () => {
 
         <div className="ctl-btns">
           <button
-            style={{ display: num < 5 ? "block" : "none" }}
+            style={{ display: num < 8 ? "block" : "none" }}
             onClick={() => {
-              if (num < 5) {
+              if (num < 9) {
                 setNum(num + 1);
               }
               setClicked(false);
@@ -132,7 +132,7 @@ const Category = () => {
             Next
           </button>
           <button
-            style={{ display: num > 4 ? "block" : "none" }}
+            style={{ display: num > 7 ? "block" : "none" }}
             onClick={() => {
               window.location.href = "/";
             }}

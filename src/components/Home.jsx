@@ -35,7 +35,7 @@ const Home = () => {
             handleClick("History");
           }}
         >
-          Geography
+          History
         </button>
       </section>
     </main>
