@@ -112,6 +112,7 @@ h4 {
   align-items: center;
   gap: 12px;
   background: white;
+  height: 90vh;
 }
 
 .question {
@@ -180,4 +181,28 @@ button.incorrect {
   align-items: center;
   justify-content: center;
   width: 230px;
+}
+
+@media only screen and (min-width: 768px) {
+  .btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .question p {
+    height: 140px;
+    width: 93%;
+    justify-content: center;
+  }
+
+  .category {
+    justify-content: center;
+  }
+
+  .ans-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
