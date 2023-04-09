@@ -3,10 +3,12 @@ import "../App.css";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const { categoryName } = useParams();
+  // const { categoryName } = useParams();
+
+  // console.log(categoryName);
 
   const handleClick = (name) => {
-    window.location.href = `/category/${categoryName}=${name}`;
+    window.location.href = `/category/${name}`;
   };
 
   return (
