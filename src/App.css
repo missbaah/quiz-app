@@ -6,13 +6,15 @@ nav {
   text-align: center;
   height: 50px;
   padding: 18px;
+  background: #3eb8d4;
   margin: 0px;
 }
 
 nav a {
   text-decoration: none;
   font-weight: 900;
-  font-size: 38px;
+  font-size: 28px;
+  color: white;
 }
 
 .home {
@@ -24,11 +26,44 @@ nav a {
   margin: 30px auto;
 }
 
+.home h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+}
+
 .btns {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
+}
+
+.ans-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.ans-btns button {
+  width: 327px;
+  height: auto;
+  border: 2px solid #efefef;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #737373;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 16px;
+}
+
+img {
+  width: 90px;
 }
 
 button {
@@ -38,7 +73,7 @@ button {
 }
 
 .btns button {
-  width: 300px;
+  width: 260px;
   height: auto;
   font-size: 16px;
   font-weight: 700;
@@ -46,6 +81,29 @@ button {
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.12);
   border-radius: 14px;
   color: #1c1c1c;
+  padding: 20px;
+}
+
+.category-card h4,
+p {
+  margin: 0;
+}
+h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.category-card p {
+  font-size: 12px;
+  font-weight: 300;
+  color: #737373;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  gap: 7px;
 }
 
 .category {
@@ -53,11 +111,27 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin: 20px auto;
+  background: white;
+}
+
+.question {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .question p {
   text-align: center;
+  background: #dcf8ff;
+  height: 140px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  width: 280px;
+  display: flex;
+  padding: 24px;
+  align-items: center;
 }
 .category h3 {
   text-align: center;
@@ -75,25 +149,35 @@ button {
   border-radius: 4px;
   background: black;
   padding: 10px;
-  width: 100px;
+  width: 327px;
+  height: 52px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  background: #3eb8d4;
+  border-radius: 16px;
 }
 
-.correct {
-  border: 1px solid green;
+button.correct {
+  border: 2px solid #3eb8d4;
+  background: #dcf8ff;
+  color: #3eb8d4;
+  font-weight: 500;
 }
 
-.incorrect {
-  border: 1px solid red;
+button.incorrect {
+  background: #ffdfdc;
+  border: 2px solid #ff5341;
+  color: #ff5341;
 }
 
 .score-circle {
-  border: 5px solid #428b94;
+  border: 5px solid #ff9f41;
   border-radius: 50%;
-  font-size: 32px;
+  font-size: 53px;
   font-weight: 300;
-  height: 150px;
+  height: 230px;
   align-items: center;
   justify-content: center;
-  display: flex;
-  width: 150px;
+  width: 230px;
 }

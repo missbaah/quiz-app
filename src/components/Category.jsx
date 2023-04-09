@@ -76,7 +76,7 @@ const Category = () => {
     return (
       <div key={qtn.question} className="question">
         <p>{decodedQuestion}</p>
-        <div className="btns">
+        <div className="ans-btns">
           {/* rending answers */}
           {allAnswers.map((answer) => (
             <button
@@ -111,7 +111,7 @@ const Category = () => {
     "
     >
       <NumContext.Provider value={{ num, setNum }}>
-        <h3>{categoryName}</h3>
+        <h4>{categoryName}</h4>
         <Score scoreNum={score} />
         <h4 style={{ display: loading ? "block" : "none" }}>Loading....</h4>
         {ListOfQuestions[num]}
