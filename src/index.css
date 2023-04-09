@@ -1,3 +1,6 @@
+@import url("https://fonts.cdnfonts.com/css/roboto");
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: #fafafa;
 }

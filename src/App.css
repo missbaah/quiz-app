@@ -6,13 +6,11 @@ nav {
   text-align: center;
   height: 50px;
   padding: 18px;
-  background: purple;
   margin: 0px;
 }
 
 nav a {
   text-decoration: none;
-  color: rgb(249, 228, 249);
   font-weight: 900;
   font-size: 38px;
 }
@@ -36,14 +34,18 @@ nav a {
 button {
   border: none;
   border-radius: 5px;
+  font-family: "Roboto";
 }
 
 .btns button {
   width: 300px;
-  height: 60px;
-  color: #000000bd;
+  height: auto;
   font-size: 16px;
   font-weight: 700;
+  background: #ffffff;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  color: #1c1c1c;
 }
 
 .category {
@@ -73,6 +75,7 @@ button {
   border-radius: 4px;
   background: black;
   padding: 10px;
+  width: 100px;
 }
 
 .correct {

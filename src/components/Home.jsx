@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Home = () => {
   const handleClick = (categoryName) => {
     window.location.href = `/category?categoryName=${categoryName}`;
@@ -14,7 +15,10 @@ const Home = () => {
             handleClick("Math");
           }}
         >
-          Math
+          <div className="category-card">
+            <h4>Math</h4>
+            <p>8 questions</p>
+          </div>
         </button>
         <button
           onClick={() => {
