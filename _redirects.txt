@@ -1,0 +1,1 @@
+/category?categoryName=:categoryName https://beebsquizapp.netlify.app/category?categoryName=:categoryName 301!
