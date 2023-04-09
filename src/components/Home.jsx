@@ -1,14 +1,9 @@
 import React from "react";
 import "../App.css";
-import { useParams } from "react-router-dom";
 
 const Home = () => {
-  // const { categoryName } = useParams();
-
-  // console.log(categoryName);
-
-  const handleClick = (name) => {
-    window.location.href = `/category/${name}`;
+  const handleClick = (categoryName) => {
+    window.location.href = `/category?categoryName=${categoryName}`;
   };
 
   return (
