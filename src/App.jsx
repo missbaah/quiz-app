@@ -8,8 +8,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/category" element={<Category />} />
-        <Route path="/category/:categoryName" element={<Category />} />
+        <Route path="/category/:categoryName" element={<Category />} />=
       </Routes>
     </div>
   );

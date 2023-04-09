@@ -1,6 +1,5 @@
 import React from "react";
 import "../App.css";
-
 const Home = () => {
   const handleClick = (categoryName) => {
     window.location.href = `/category?categoryName=${categoryName}`;

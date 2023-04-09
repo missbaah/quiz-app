@@ -6,6 +6,8 @@ import NumContext from "../context/NumContext";
 
 const Category = () => {
   const location = useLocation();
+
+  // Extract the categoryName from the query parameter
   const categoryName = new URLSearchParams(location.search).get("categoryName");
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
