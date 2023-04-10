@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
 import Score from "./Score";
 import he from "he";
 import NumContext from "../context/NumContext";
@@ -121,7 +120,7 @@ const Category = () => {
         <h4>{categoryName}</h4>
         <Score scoreNum={score} />
         {loading ? (
-          <Spinner animation="grow" variant="light" />
+          <h3 className="tracking-out-contract">Loading...</h3>
         ) : (
           ListOfQuestions[num]
         )}
