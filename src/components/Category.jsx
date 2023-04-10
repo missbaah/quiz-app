@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 import Score from "./Score";
 import he from "he";
 import NumContext from "../context/NumContext";
@@ -9,6 +10,8 @@ const Category = () => {
 
   // Extract the categoryName from the query parameter
   const categoryName = new URLSearchParams(location.search).get("categoryName");
+
+  // declaring state
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [num, setNum] = useState(0);
@@ -31,19 +34,23 @@ const Category = () => {
   }
 
   // fetching data from API based on category
-  useEffect(() => {
-    fetch(
+  const fetchData = () => {
+    setLoading(true);
+    return fetch(
       `https://opentdb.com/api.php?amount=8&category=${categoryNum}&difficulty=easy&type=multiple`
     )
       .then((response) => response.json())
       .then((data) => {
-        setLoading(true);
         setQuestions([...data.results]);
         setLoading(false);
       })
       .catch((error) => {
         console.log("Error:" + error);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   // rendering the data
@@ -113,9 +120,11 @@ const Category = () => {
       <NumContext.Provider value={{ num, setNum }}>
         <h4>{categoryName}</h4>
         <Score scoreNum={score} />
-        <h4 style={{ display: loading ? "block" : "none" }}>Loading....</h4>
-        {ListOfQuestions[num]}
-
+        {loading ? (
+          <Spinner animation="grow" variant="light" />
+        ) : (
+          ListOfQuestions[num]
+        )}
         <div className="ctl-btns">
           <button
             style={{ display: num < 8 ? "block" : "none" }}
